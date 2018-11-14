@@ -1,0 +1,309 @@
+/* -- BASE ELEMENT STYLING -- */
+html {
+    background-color: #F9F9F9;
+}
+
+h1, h2, h3, h4, h5, h6, p, label, select option, {
+    font-family: "Myriad Pro", sans-serif;
+    color: #444444;
+}
+
+body {
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family: "Myriad Pro", sans-serif;
+    color: #444444;
+}
+
+a {
+    color: #d21b8e;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+
+
+/* -- FORM STYLING -- */
+#visaPrices{
+    margin: 0 auto;
+    margin-bottom: 25px;
+}
+.visa-form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.element {
+    display: block;
+    margin: 5px 0px;
+}
+
+.section {
+    margin: 20px 0px;
+    padding: 30px;
+    background-color: #FFF;
+}
+
+.visa-form input[type="text"], select {
+    border-radius: 5px;
+    border: 1px solid #f1f1f1;
+    padding: 4px;
+}
+
+.visa-form input[type="checkbox"]{
+    border-radius: 5px;
+    border: 1px solid #f1f1f1;
+    background-color: #fff; 
+}
+
+.submit {
+    
+    color: #fff;
+    background-color: #1376a9;
+    -webkit-transition: background-color 1s ease-out;
+    -moz-transition: background-color 1s ease-out;
+    -o-transition: background-color 1s ease-out;
+    transition: background-color 1s ease-out;
+    
+}
+
+.submit:hover {
+    background-color: #00314f;
+}
+
+select option {
+    font-family: "Myriad Pro", sans-serif;
+}
+
+.input-wrapper {
+    margin-bottom: 10px;
+}
+
+
+
+
+
+/* -- SEARCH BAR STYLING -- */
+#searchBar {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background-image: url("images/searchicon.png");
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    flex-grow: 5;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #DDD;
+    font-size: 16px;
+}
+
+.search-container {
+    display: flex;
+}
+
+
+
+
+
+/* -- TABLE STYLING --*/
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 2px;
+}
+
+td,
+th {
+	padding: 15px;
+	border-bottom: 1px solid #DDDDDD;
+    font-family: "Myriad Pro", sans-serif;
+    color: #404040;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+table {
+    background-color: #ffffff;
+}
+
+.table-header {
+    background-color: #f1f1f1;
+}
+
+.delete img {
+    filter: grayscale(100%);
+}
+
+.delete img:hover {
+    filter: grayscale(0%);
+    
+    -webkit-transition: filter 0.3s ease-out;
+    -moz-transition: filter 0.3s ease-out;
+    -o-transition: filter 0.3s ease-out;
+    transition: filter 0.3s ease-out;
+}
+
+
+
+
+
+
+
+
+/* -- HEADER STYLING --*/
+
+.top-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    background-color: #fff;
+    
+    position:absolute;
+    left:0;
+    right:0;
+    top: 0;
+    
+    margin-bottom: 50px;
+}
+
+.top-menu a {
+    
+    width: 100%;
+    border-left: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #9b9b9b;
+    
+    -webkit-transition: color 1s ease-out;
+    -moz-transition: color 1s ease-out;
+    -o-transition: color 1s ease-out;
+    transition: color 1s ease-out;
+    
+}
+
+.top-menu a:hover {
+    
+    color: #000;
+    
+    
+}
+
+.active {
+    color: #000;
+    border-bottom: 3px solid #1376a9;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* -- SUCCESS PAGE STYLING --*/
+.success-body {
+    background-image: url("images/success-img.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; 
+    
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    align-items: center;
+    
+}
+
+.container {
+    
+    margin: 0px auto;
+    text-align: center;
+    
+}
+
+.success-heading{
+    
+    font-size: 80px;
+    margin-bottom: 0px;
+}
+
+.success-message {
+    margin-top: 0px;
+}
+
+.focus-btn {
+    
+    
+    color: #fff;
+    
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out;
+    
+}
+
+.home-btn{ background-color: #6EEB83; }
+.home-btn:hover { background-color: #47D85F; }
+
+
+.unfocus-btn {
+    
+    background: none;
+    color: #9B9B9B;
+    text-decoration: underline;
+    
+    -webkit-transition: color 0.5s ease-out;
+    -moz-transition: color 0.5s ease-out;
+    -o-transition: color 0.5s ease-out;
+    transition: color 0.5s ease-out;
+    
+}
+
+.unfocus-btn:hover { color: #727272; }
+
+.btn, input[type="submit"] {
+    border-radius: 2px;
+    padding: 12px 30px;
+    font: inherit;
+	border: none;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* -- DELETE PAGE STYLING --*/
+.delete-btn {background-color: #CC3628; }
+.delete-btn:hover {background-color: #FF4332; }

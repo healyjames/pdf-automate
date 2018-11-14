@@ -1,9 +1,3 @@
-<h2><?php echo $title; ?></h2>
-
-<?php echo validation_errors(); //This function will return any error messages sent back by the validator. ?>
-
-<?php echo form_open('records/create'); ?>
-
 <div class="section section-a">
             <div class="element">
                 <label for="country">Country: </label>
@@ -302,8 +296,8 @@
         
         <div class="section section-b">
             <div class="element">
-                <label for="processing">Processing time: </label>
-                <input name="processing" id="processing" placeholder="Days...">
+                <label for="processingtime">Processing time: </label>
+                <input type="text" name="processingtime" id="processingtime" placeholder="Days...">
             </div>
             
             <!-- 
@@ -315,12 +309,24 @@
             -->
             <div class="element">
                 <label for="validity">Validity: </label>
-                <input name="validity" id="validity" placeholder="Days...">
+                <input type="text" name="validity" id="validity">
+                
+                <input type="radio" name="validity-format" value="Days" id="days" checked>Days
+                <input type="radio" name="validity-format" value="Weeks" id="weeks">Weeks
+                <input type="radio" name="validity-format" value="Months" id="months">Months
+                <input type="radio" name="validity-format" value="Years" id="years">Years
+                
             </div>
             
             <div class="element">
                 <label for="stay">Maximum length of stay: </label>
-                <input name="stay" id="stay" placeholder="Days...">
+                <input type="text" name="stay" id="stay">
+                
+                <input type="radio" name="stay-format" value="Days" id="days" checked>Days
+                <input type="radio" name="stay-format" value="Weeks" id="weeks">Weeks
+                <input type="radio" name="stay-format" value="Months" id="months">Months
+                <input type="radio" name="stay-format" value="Years" id="years">Years
+                
             </div>
             
             <div class="element">
@@ -338,35 +344,56 @@
         <div class="section section-c">
             <div class="element">
                 <label for="embassyfee">Embassy Fee: </label>
-                £<input name="embassyfee" id="embassyfee" class="amount" >
+                £<input type="text" name="embassyfee" id="embassyfee" class="amount" >
             </div>
+            
+            
+            <!--
+
+            ADD Price band option
+            IF band 'S' (variable)  has been selected
+            SHOW a inout feild allowing input of a variable service fee
+
+            JavaScript??
+
+            -->
+            
+            <!--
+
+            Service fee will always have VAT added.
+
+            There should be a sub-total and a total. Sub-total to show the fee of all teh values in the inputs and the total will take into account VAT.
+
+            Need to think about how this gets translated into an SQL query.
+
+            When a user ticks to apply VAT to the additonal fee, a new 
+
+
+            -->
             
             <div class="element">
                 <label for="servicefee">Service Fee: </label>
-                £<input name="servicefee" id="servicefee" class="amount" >
+                £<input type="text" name="servicefee" id="servicefee" class="amount" >
             </div>
             
             <div class="element">
                 <label for="additionalfee">Additional Fee: </label>
-                £<input name="additionalfee" id="additionalfee" class="amount" >
+                £<input type="text" name="additionalfee" id="additionalfee" class="amount" >
+                <input type="checkbox" name="vat" value="vat" id="vat">+ VAT
+                <script src="<?php echo base_url(); ?>assets/custom-scripts/calculate-vat.js"></script>
             </div>
         </div>
         
         <div class="section section-d">
             <div class="element">
-                <!-- 
-                    Probably want some JQuery here to add up all the values inputted in real-time and display the result
-                    Need to think about VAT
-                    
-                    Don't forget - the total still needs to be caculated and then added to the SQL input statement (without VAT)
-                
-                -->
-                <?php echo "<p>Total: XX.XX</p>" ?>
+                <!-- <script src="<?php echo base_url(); ?>assets/custom-scripts/calculate-total.js"></script> -->
+                <p>Total: £<span class="total"></span></p>
             </div>
         </div>
         
         <div class="element">
-            <input type="submit" name="submit" value="Submit">
+            <input type="submit" name="submit" value="Submit" class="submit">
         </div>
         
     </form>
+

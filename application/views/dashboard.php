@@ -1,8 +1,18 @@
 <h2><?php echo $title; ?></h2>
 
-		      <table>
+<!-- SEARCH FACILITY -->
+<!--<div class="search-container container">
+
+<input type="text" id="searchBar" onkeyup="searchTable()" placeholder="Search for country..."><a href="/create"><button class="focus-btn btn home-btn">Add New Price</button></a>
+<script src="<?php $i = base_url(); /** echo base_url(); */ ?>assets/custom-scripts/search-table.js"></script>
+    
+</div>-->
+
+
+		      <table id="visaPrices">
 			     <thead>
-				    <tr>
+				    <tr class="table-header">
+                        <th></th>
                         <th>Country</th>
                         <th>Purpose</th>
                         <th>Visa Type</th>
@@ -24,7 +34,9 @@
 
 //Escaping html -> http://php.net/manual/en/language.basic-syntax.phpmode.php
 
-foreach($price as $row){
+foreach($result as $row){
+    
+    echo '<td class="delete"><a href="/delete/' . $row['visa_id'] . '"><img src="' . base_url() . 'assets/images/delete.png"></a></td>';
     
     echo "<td>" . html_escape($row['country']) . "</td>";
     echo "<td>" . html_escape($row['purpose']) . "</td>";
@@ -38,7 +50,7 @@ foreach($price as $row){
     echo "<td>" . html_escape($row['additionalfee']) . "</td>";
     echo "<td>" . html_escape($row['total']) . "</td>";
     
-    echo '<td><a href="/index.php/records/update.php?visa_id="' . $row['visa_id'] . '><p>Edit</p></a></td>';
+    echo '<td><a href="/update/' . $row['visa_id'] . '"><p>Edit</p></a></td>';
     
     echo "</tr>";
     

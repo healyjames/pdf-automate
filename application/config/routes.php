@@ -50,9 +50,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-$route['default_controller'] = 'pages/view';
-$route['records/create'] = 'records/create';
-$route['records'] = 'records';
-$route['(:any)'] = 'pages/view/$1';
+
+$route['delete'] = 'delete/index';
+$route['update'] = 'update/index';
+$route['create'] = 'create/index';
+$route['update/:num'] = 'update/index/$1';
+$route['delete/:num'] = 'delete/index/$1';
+
+
+
+//this sets the home page -  e.g. the page that appears at www.example.com/
+$route['default_controller'] = 'dashboard';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
