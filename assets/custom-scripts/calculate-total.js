@@ -1,7 +1,7 @@
 //Add up all the values in the input boxes and then display in HTML
 $(document).ready(function(){
                         
-    $('.element').on('input', '.amount', function(){
+    $('.form-group').on('input', '.amount', function(){
                             
         var total = 0;
                             
@@ -9,7 +9,7 @@ $(document).ready(function(){
                                 
                 var inputVal = $(this).val();
                                 
-                    if($.isNumeric(inputVal)){
+                    if(inputVal > 0){
                                    
                         total += parseFloat(inputVal);
                                     

@@ -12,29 +12,25 @@ class Dashboard extends CI_Controller {
         }
 
 	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
+	 
+     Index Page for this controller.
+     
+     The select statement sets up all of the data to be retrieved from the database using aliases. It also uses the CONCAT() function in MySQL so that we can pair a result with its length of time e.g. '1' 'Day' or '3' 'Months'.
+     
 	 */
-	public function index()
-	{
+    
+	public function index(){
+        
         $this->db->order_by("country", "asc");
         
-        $data['result'] = $this->get_data_model->get_data();
+        $data['visas'] = $this->get_data_model->get_all_data_formatted();
         $data['title'] = "Home";
+        $data['vat_rate'] = 1.2;
         
         $this->load->view('templates/header', $data);
+        $this->load->view('templates/nav-bar', $data);
 		$this->load->view('dashboard', $data);
         $this->load->view('templates/footer', $data);
+        
 	}
 }

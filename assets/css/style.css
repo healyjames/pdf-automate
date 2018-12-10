@@ -9,8 +9,7 @@ h1, h2, h3, h4, h5, h6, p, label, select option, {
 }
 
 body {
-    padding-left: 15px;
-    padding-right: 15px;
+    margin: 0px;
     font-family: "Myriad Pro", sans-serif;
     color: #444444;
 }
@@ -23,8 +22,12 @@ a {
 a:hover {
     text-decoration: underline;
 }
-
-
+.section {
+    display: block;
+    background-color: #FFF;
+    padding: 15px;
+    margin-bottom: 15px;
+}
 
 
 
@@ -38,34 +41,61 @@ a:hover {
     margin: 0 auto;
     margin-bottom: 25px;
 }
-.visa-form {
-    width: 80%;
-    margin: 0 auto;
+.body-container {
+    padding: 0px 30px;
 }
-
-.element {
+.form-group {
     display: block;
-    margin: 5px 0px;
 }
-
-.section {
-    margin: 20px 0px;
-    padding: 30px;
-    background-color: #FFF;
+label {
+    display: block;
+    padding-top: 1rem;
+    padding-bottom: 6px;
+    font-size: 18px;
 }
-
+.wrapper {
+    margin: 0 auto;
+    width: 60%;
+    padding: 3% 6%;
+    background-color: #fff;
+}
 .visa-form input[type="text"], select {
     border-radius: 5px;
-    border: 1px solid #f1f1f1;
-    padding: 4px;
+    border: 1px solid #DDD;
+    padding: 10px;
+    width: 100%;
+}
+.visa-form input[type="text"]:focus, select:focus {
+    border: 1px solid #00314f;
+    outline: none;
+}
+.flex{
+    display: flex;
+}
+.flex select {
+    width: 25%;
+    /*margin-left: 1rem;*/
 }
 
-.visa-form input[type="checkbox"]{
-    border-radius: 5px;
-    border: 1px solid #f1f1f1;
-    background-color: #fff; 
+.format {
+    margin-left: 1rem;
 }
 
+.band {
+    margin-right: 1rem;
+}
+
+.flex .checkbox {
+    width: 35%;
+    margin-left: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.checkbox p {
+    margin: 0px;
+    margin-left: 8px;
+}
 .submit {
     
     color: #fff;
@@ -76,18 +106,41 @@ a:hover {
     transition: background-color 1s ease-out;
     
 }
-
 .submit:hover {
     background-color: #00314f;
 }
 
-select option {
-    font-family: "Myriad Pro", sans-serif;
+
+
+
+
+
+
+
+/* -- CHECKBOX STYLING -- */
+.checkbox input[type="checkbox"] {
+    display: none;
 }
 
-.input-wrapper {
-    margin-bottom: 10px;
+.checkbox span {
+    width: 20px;
+    height: 20px;
+    display: block;
+    border-radius: 5px;
+    border: 1px solid #DDD;
 }
+
+.checkbox input:checked + span {
+    background-image: url("/assets/images/tick.png");
+    background-size: 15px;
+    background-position: 2px 2px;
+    background-repeat: no-repeat;
+    background-color: #288dff;
+    border: 1px solid #288dff;
+}
+
+
+
 
 
 
@@ -97,7 +150,7 @@ select option {
 #searchBar {
     margin-bottom: 20px;
     margin-right: 20px;
-    background-image: url("images/searchicon.png");
+    background-image: url("/assets/images/searchicon.png");
     background-position: 10px 10px;
     background-repeat: no-repeat;
     flex-grow: 5;
@@ -105,7 +158,6 @@ select option {
     border: 1px solid #DDD;
     font-size: 16px;
 }
-
 .search-container {
     display: flex;
 }
@@ -114,8 +166,10 @@ select option {
 
 
 
-/* -- TABLE STYLING --*/
 
+
+
+/* -- TABLE STYLING --*/
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
@@ -123,32 +177,30 @@ table {
     border: 1px solid #DDDDDD;
     border-radius: 2px;
 }
-
-td,
-th {
+td, th {
 	padding: 15px;
 	border-bottom: 1px solid #DDDDDD;
     font-family: "Myriad Pro", sans-serif;
     color: #404040;
+    min-width: 16px;
 }
-
 tr:hover {
     background-color: #f1f1f1;
 }
-
 table {
     background-color: #ffffff;
 }
-
 .table-header {
     background-color: #f1f1f1;
 }
-
-.delete img {
+.delete img, .edit img {
     filter: grayscale(100%);
+    display:none;
 }
-
-.delete img:hover {
+tr:hover .delete img, tr:hover .edit img {
+    display: block;
+}
+.delete img:hover, .edit img:hover {
     filter: grayscale(0%);
     
     -webkit-transition: filter 0.3s ease-out;
@@ -165,7 +217,6 @@ table {
 
 
 /* -- HEADER STYLING --*/
-
 .top-menu {
     display: flex;
     flex-wrap: nowrap;
@@ -174,14 +225,8 @@ table {
     justify-content: center;
     background-color: #fff;
     
-    position:absolute;
-    left:0;
-    right:0;
-    top: 0;
-    
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
-
 .top-menu a {
     
     width: 100%;
@@ -198,14 +243,9 @@ table {
     transition: color 1s ease-out;
     
 }
-
 .top-menu a:hover {
-    
-    color: #000;
-    
-    
+    color: #000; 
 }
-
 .active {
     color: #000;
     border-bottom: 3px solid #1376a9;
@@ -218,13 +258,9 @@ table {
 
 
 
-
-
-
-
 /* -- SUCCESS PAGE STYLING --*/
 .success-body {
-    background-image: url("images/success-img.png");
+    background-image: url("http://127.0.0.1/assets/images/success-img.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center; 
@@ -236,42 +272,35 @@ table {
     align-items: center;
     
 }
-
 .container {
     
     margin: 0px auto;
     text-align: center;
     
 }
-
 .success-heading{
     
     font-size: 80px;
     margin-bottom: 0px;
 }
-
 .success-message {
     margin-top: 0px;
 }
-
-.focus-btn {
-    
-    
+.focus-btn { 
     color: #fff;
-    
     -webkit-transition: background-color 0.5s ease-out;
     -moz-transition: background-color 0.5s ease-out;
     -o-transition: background-color 0.5s ease-out;
     transition: background-color 0.5s ease-out;
     
 }
-
-.home-btn{ background-color: #6EEB83; }
-.home-btn:hover { background-color: #47D85F; }
-
-
+.home-btn{
+    background-color: #6EEB83;
+}
+.home-btn:hover {
+    background-color: #47D85F;
+}
 .unfocus-btn {
-    
     background: none;
     color: #9B9B9B;
     text-decoration: underline;
@@ -282,9 +311,9 @@ table {
     transition: color 0.5s ease-out;
     
 }
-
-.unfocus-btn:hover { color: #727272; }
-
+.unfocus-btn:hover {
+    color: #727272;
+}
 .btn, input[type="submit"] {
     border-radius: 2px;
     padding: 12px 30px;
@@ -300,10 +329,6 @@ table {
 
 
 
-
-
-
-
 /* -- DELETE PAGE STYLING --*/
-.delete-btn {background-color: #CC3628; }
-.delete-btn:hover {background-color: #FF4332; }
+.delete-btn { background-color: #CC3628; }
+.delete-btn:hover { background-color: #FF4332; }

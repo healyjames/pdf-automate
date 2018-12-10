@@ -11,40 +11,24 @@ class Insert_data_model extends CI_Model {
         
     }
     
-    public function setup_data_format(){
-        
-        $validity_format = NULL;
-        $stay_format = NULL;
-        
-        $total = $this->input->post('embassyfee') + $this->input->post('servicefee') + $this->input->post('additionalfee');
-        
-        if(isset($_POST['validity-format'])){
-            $validity_format = $_POST['validity-format'];
-        }
-        if(isset($_POST['stay-format'])){
-            $stay_format = $_POST['stay-format'];
-        }
-        
-        return array("total" => $total, "validity_format" => $validity_format, "stay_format" => $stay_format);
-        
-    }
-    
-    public function insert_data(){
-        
-        $format = $this->setup_data_format();
+    /**
+    This class takes data from a form and returns a data array
+    */
+    public function visa_data(){
         
         $data = array(
-        'country' => $this->input->post('country'),
+        'country_id' => $this->input->post('country'),
         'purpose' => $this->input->post('purpose'),
         'visatype' => $this->input->post('visatype'),
-        'processingtime' => $this->input->post('processingtime') . " Days",
-        'validity' => $this->input->post('validity') . " " . $format['validity_format'],
-        'stay' => $this->input->post('stay') . " " . $format['stay_format'],
+        'processingtime_tvc' => $this->input->post('processingtime_tvc'),
+        'processingtime_tvc_format_id' => $this->input->post('processingtime_tvc_format'),
+        'processingtime_embassy' => $this->input->post('processingtime_embassy'),
+        'validity' => $this->input->post('validity'),
+        'validity_format_id' => $this->input->post('validity_format'),
+        'stay' => $this->input->post('stay'),
+        'stay_format_id' => $this->input->post('stay_format'),
         'entries' => $this->input->post('entries'),
-        'embassyfee' => $this->input->post('embassyfee'),
-        'servicefee' => $this->input->post('servicefee'),
-        'additionalfee' => $this->input->post('additionalfee'),
-        'total' => $format['total'],
+        'embassy_fee' => $this->input->post('embassy_fee'),
         'date_updated' => date('Y-m-d H:i:s')
     );
         
@@ -52,21 +36,52 @@ class Insert_data_model extends CI_Model {
         
     }
     
-    public function set_data(){
+    public function price_data($visa_id){
         
-        $data = $this->insert_data();
+        $data = array(
+        'visa_id' => $visa_id,
+        'price_band_id' => $this->input->post('band_list'),
+        'variable_service_fee' => $this->input->post('service_fee'),
+        'additional_fee' => $this->input->post('additional_fee'),
+            
+        //Because PHP assumes '0' to be NULL we need to check if the vat value is NULL, in which case we change it to a 0 to send to the database
+        'additional_fee_vat' =>  (!empty($this->input->post('vat'))) ? $this->input->post('vat') : 0
+    );
         
-        return $this->db->insert('visas', $data);
+        return $data;
         
     }
     
-    public function update_data($id){
+    
+    /**
+    This class sets up an update SQL query using the data from the insert_data() function
+    */
+    public function update_data($table, $data, $id){
             
-            $data = $this->insert_data();
-        
             $this->db->where('visa_id', $id);
-            return $this->db->update('visas', $data);
+            return $this->db->update($table, $data);
+        
     }
+    
+    
+    
+    
+    
+    
+    public function set_data($table, $data){
+        
+        return $this->db->insert($table, $data);
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
 ?>
