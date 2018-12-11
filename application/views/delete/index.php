@@ -32,7 +32,7 @@
     $additionalfee = 0;
     
     if($visa['additional_fee_vat'] === '1'){
-        $additionalfee = $visa['additional_fee'] * $vat_rate;
+        $additionalfee = $visa['additional_fee'] * ($vat_rate + 1);
     }else {
         $additionalfee = $visa['additional_fee'];
     }

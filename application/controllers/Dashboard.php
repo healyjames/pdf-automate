@@ -6,7 +6,7 @@ class Dashboard extends CI_Controller {
     public function __construct(){
             
             parent::__construct();
-            $this->load->model('get_data_model');
+            $this->load->model(array('get_data_model', 'vat_model'));
             $this->load->helper('url_helper');
             
         }
@@ -25,7 +25,11 @@ class Dashboard extends CI_Controller {
         
         $data['visas'] = $this->get_data_model->get_all_data_formatted();
         $data['title'] = "Home";
-        $data['vat_rate'] = 1.2;
+        $data['vat_rate'] = $this->vat_model->get_vat();
+        
+        
+        
+        $data['load_js'] = array('search-table.js');
         
         $this->load->view('templates/header', $data);
         $this->load->view('templates/nav-bar', $data);

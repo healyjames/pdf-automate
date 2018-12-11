@@ -8,6 +8,25 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery/jquery.js"></script>
         <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/images/favicon.ico" />
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/jquery/jquery-ui.js"></script>
+        
+        
+        <?php
+        
+        //If $load_script is not empty, loop through it and print out each script tag
+        //Need to make sure my Controller declares $data['load_script'] as an array
+        
+        if(!empty($load_js)){
+            
+            foreach($load_js as $js){
+                
+                echo '<script type="text/javascript" src="' .  base_url() . 'assets/custom-scripts/' . $js . '"></script>';
+                
+            }
+        }
+        
+        ?>
+        
+        
         <title><?php echo $title; ?></title>
         
     </head>

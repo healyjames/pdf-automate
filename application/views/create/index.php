@@ -174,10 +174,6 @@ echo form_open('create/index', $formClass);
                 
             </select>
             <input type="text" name="band" id="band" class="amount" readonly>
-
-
-            <script src="<?php echo base_url(); ?>assets/custom-scripts/price-bands.js"></script>
-            <script src="<?php echo base_url(); ?>assets/custom-scripts/auto-selector.js"></script>
             
                 
             </div>
@@ -187,7 +183,6 @@ echo form_open('create/index', $formClass);
     <div class="form-group servicefee">
         <label for="service_fee">Variable Service Fee: </label>
         <input type="text" name="service_fee" id="service_fee" class="amount" >
-        <script src="<?php echo base_url(); ?>assets/custom-scripts/show-hide.js"></script>
     </div>
 
 
@@ -199,18 +194,11 @@ echo form_open('create/index', $formClass);
         <label for="vat"></label>
         <label class="checkbox" style="padding: 0px;">    
             <input type="checkbox" name="vat" value="0" id="vat">
-            <!-- PHP classes a '0' as NULL, need to figure this out -->
             <span class="check"></span><p>VAT</p>
         </label>
-            
-            <script src="<?php echo base_url(); ?>assets/custom-scripts/checked-value.js"></script>
-        
-            
-        <script src="<?php echo base_url(); ?>assets/custom-scripts/calculate-vat.js"></script>
     </div>
     
     <div class="form-group">
-        <script src="<?php echo base_url(); ?>assets/custom-scripts/calculate-total.js"></script>
         <p>Total: £<span class="total">0.00</span></p>
 
 

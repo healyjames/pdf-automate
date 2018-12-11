@@ -4,7 +4,7 @@
 <div class="search-container container">
 
 <input type="text" id="searchBar" onkeyup="searchTable()" placeholder="Search for country..."><a href="/create"><button class="focus-btn btn home-btn">Add New Price</button></a>
-<script src="<?php echo base_url(); ?>assets/custom-scripts/search-table.js"></script>
+<!--<script src="<?php echo base_url(); ?>assets/custom-scripts/search-table.js"></script>-->
     
 </div>
 
@@ -51,6 +51,9 @@ foreach($visas as $visa){
         
     }
     
+    
+    
+    
     echo '<td class="edit"><a href="/update/' . $visa['visa_id'] . '"><img src="' . base_url() . 'assets/images/edit.png"></a></td>';
     echo "<td>" . html_escape($visa['country']) . "</td>";
     echo "<td>" . html_escape($visa['purpose']) . "</td>";
@@ -62,8 +65,39 @@ foreach($visas as $visa){
     echo "<td>" . html_escape($visa['entries']) . "</td>";
     echo "<td>£" . html_escape($visa['embassy_fee']) . "</td>";
     echo "<td>" . html_escape($visa['price_band_id']) . "</td>";
-    echo "<td>£" . html_escape($visa['variable_service_fee'] + $visa['price']) . "</td>";
-    echo "<td>£" . html_escape($visa['variable_service_fee'] + $visa['price']) * 0.2 . "</td>";
+    //echo "<td>£" . html_escape($service_fee) . "</td>";
+    
+    
+    
+    $service_fee = $visa['variable_service_fee'] + $visa['price'];
+    $vat = NULL;
+    
+    if($visa['purpose'] != 'Business'){
+        
+        $service_fee = $service_fee / ($vat_rate + 1);
+        
+        echo "<td>£" . html_escape(number_format($service_fee, 2, '.', '')) . "</td>";
+        
+        $vat = ($visa['variable_service_fee'] + $visa['price']) - $service_fee;
+        
+        echo "<td>£" . html_escape(number_format($vat, 2, '.', '')) . "</td>";
+        
+    }else {
+        
+        echo "<td>£" . html_escape(number_format($service_fee, 2, '.', '')) . "</td>";
+        
+        $vat = $service_fee * $vat_rate;
+        
+        echo "<td>£" . html_escape(number_format($vat, 2, '.', '')) . "</td>";
+        
+    }
+    
+    
+    
+    
+    //echo "<td>£" . html_escape($vat) . "</td>";
+    
+    
     echo "<td>£" . html_escape($additionalfee) . "</td>";
     echo "<td>£" . html_escape($visa['embassy_fee'] + $visa['variable_service_fee'] + $visa['price'] + $additionalfee) . "</td>";
     echo '<td class="delete"><a href="/delete/' . $visa['visa_id'] . '"><img src="' . base_url() . 'assets/images/delete.png"></a></td>';

@@ -154,10 +154,6 @@ echo form_open('update/' . $id, $formClass);
                 
                 </select>
                 <input type="text" name="band" id="band" class="amount" value="<?php echo $visa['price']; ?>" readonly>
-                
-
-                <script src="<?php echo base_url(); ?>assets/custom-scripts/price-bands.js"></script>
-                <script src="<?php echo base_url(); ?>assets/custom-scripts/auto-selector.js"></script>
             
                 
             </div>
@@ -166,7 +162,6 @@ echo form_open('update/' . $id, $formClass);
         <div class="form-group servicefee">
             <label for="service_fee">Variable Service Fee: </label>
             <input type="text" name="service_fee" id="service_fee" class="amount" value="<?php echo $visa['variable_service_fee'] ?>">
-            <script src="<?php echo base_url(); ?>assets/custom-scripts/show-hide.js"></script>
         </div>
         
         
@@ -186,27 +181,26 @@ echo form_open('update/' . $id, $formClass);
                 echo $visa['additional_fee'];
                 
             }
-                                                                                         
-
         ?>">
             
             
         
         <label for="vat"></label>
         <label class="checkbox" style="padding: 0px;">    
-            
-            
             <?php
             
-                if($visa['additional_fee_vat'] === '1'){
-                    
-                    echo '<input type="checkbox" name="vat" value="' . $visa['additional_fee_vat'] . '" id="vat" checked>';
-                    
-                }else {
-                    
-                    echo '<input type="checkbox" name="vat" value="' . $visa['additional_fee_vat'] . '" id="vat">';
-                    
-                }
+            
+            
+    
+            if($visa['additional_fee_vat'] === '1'){
+                
+                echo '<input type="checkbox" name="vat" value="' . $visa['additional_fee'] * ($vat_rate + 1) . '" id="vat" checked>';
+                
+            }else {
+                
+                echo '<input type="checkbox" name="vat" value="' . $visa['additional_fee_vat'] . '" id="vat">';
+                
+            }
 
             ?>
             
@@ -214,21 +208,9 @@ echo form_open('update/' . $id, $formClass);
             
             <span class="check"></span><p>VAT</p>
         </label>
-            
-            
-            
-            
-            
-            
-            
-        <script src="<?php echo base_url(); ?>assets/custom-scripts/checked-value.js"></script>
-        
-            
-        <script src="<?php echo base_url(); ?>assets/custom-scripts/calculate-vat.js"></script>
     </div>
         
         <div class="form-group">
-            <script src="<?php echo base_url(); ?>assets/custom-scripts/calculate-total.js"></script>
             <p>Total: £<span class="total"><?php echo $visa['embassy_fee'] + $visa['variable_service_fee'] + $visa['additional_fee'] + $visa['price'];  ?></span></p>
         
             <input type="submit" name="submit" value="Submit" class="submit">

@@ -25,9 +25,11 @@ class Create extends CI_Controller {
         $this->load->library('form_validation');
         
         $data['title'] = "Add A New  Visa Price";
-        $data['countries'] = $this->get_data_model->get_data('*', 'countries');
-        $data['price_bands'] = $this->get_data_model->get_data('*', 'price_bands');
-        $data['formats'] = $this->get_data_model->get_data('*', 'formats');
+        $data['countries'] = $this->get_data_model->get_all_data('countries');
+        $data['price_bands'] = $this->get_data_model->get_all_data('price_bands');
+        $data['formats'] = $this->get_data_model->get_all_data('formats');
+        
+        $data['load_js'] = array('price-bands.js','auto-selector.js', 'show-hide.js', 'checked-value.js', 'calculate-vat.js','calculate-total.js');
         
         $this->form_validation->set_rules('country', 'Country', 'required');
         $this->form_validation->set_rules('purpose', 'Purpose', 'required');
