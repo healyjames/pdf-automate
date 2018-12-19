@@ -29,12 +29,14 @@ class Dashboard extends CI_Controller {
         
         
         
-        $data['load_js'] = array('search-table.js');
+        $data['load_js'] = array('search-table.js','total-items.js','calculate-total-dashboard');
         
         $this->load->view('templates/header', $data);
         $this->load->view('templates/nav-bar', $data);
 		$this->load->view('dashboard', $data);
         $this->load->view('templates/footer', $data);
+        
+        
         
 	}
 }

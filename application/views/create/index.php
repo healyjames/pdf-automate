@@ -13,6 +13,7 @@ echo form_open('create/index', $formClass);
 
 
 <div class="wrapper">
+    <div class="wrapper_container">
     
     <h2><?php echo $title; ?></h2>
     
@@ -160,12 +161,12 @@ echo form_open('create/index', $formClass);
     <div class="form-group">
             <label for="band">Price Band: </label>
             <div class="flex">
-            <select type="text" name="band_list" id="band_list" class="band">
+            <select type="text" name="band_list" id="band_list" class="band amount">
                 <option style="display:none"> </option>
                 
         <?php foreach($price_bands as $band){ 
 
-            echo '<option value="' . $band['price_band_id'] . '">' . $band['price_band_id'] . '</option>';
+            echo '<option label="' . $band['price'] . '" value="' . $band['price_band_id'] . '">' . $band['price_band_id'] . '</option>';
 
         }
         ?>
@@ -173,39 +174,160 @@ echo form_open('create/index', $formClass);
                 
                 
             </select>
-            <input type="text" name="band" id="band" class="amount" readonly>
-            
                 
+            <input type="text" name="band" id="band" class="amount" readonly>
             </div>
         </div>
+
+    
+    
+    
+    
     
 
     <div class="form-group servicefee">
         <label for="service_fee">Variable Service Fee: </label>
         <input type="text" name="service_fee" id="service_fee" class="amount" >
     </div>
+    
+    
+    <div class="form-group">
+        <label for="service_fee_vat">Service Fee VAT: </label>
+        <input type="text" name="service_fee_vat" id="service_fee_vat" class="amount" placeholder="VAT" readonly>
+    </div>
+    
+    
 
 
     <div class="form-group">
         <label for="additional_fee">Additional Fee: </label>
-        <div class="flex">
-        <input type="text" name="additional_fee" id="additional_fee" class="amount" >
+            <div class="flex">
+            <input type="text" name="additional_fee" id="additional_fee" value="0.00" class="amount" >
+
+            <label for="vat"></label>
+            <label class="checkbox" style="padding: 0px;">    
+                <input type="checkbox" name="vat" value="0" id="vat">
+                <span class="check"></span><p>VAT</p>
+            </label>
+        </div>
+    </div>
         
-        <label for="vat"></label>
-        <label class="checkbox" style="padding: 0px;">    
-            <input type="checkbox" name="vat" value="0" id="vat">
-            <span class="check"></span><p>VAT</p>
-        </label>
+
+    <div class="form-group">
+        <div class="summary_btn"><p>Summary</p></div>
+    </div>
+        
+        
+        <script>
+            
+            /**
+            This script toggles the summary box on the /create and /update pages.
+            The 
+            */
+        
+        $(document).ready(function(){
+            
+            var summary_btn =  $('.summary_btn');
+            var close_btn =  $('.summary_close_btn');
+            var summary = $('.summary');
+            
+            summary.hide();
+            
+            summary_btn.click(function(){
+                summary.slideToggle();
+                summary_btn.slideToggle();
+                
+                
+                
+            });
+            
+            close_btn.click(function(){
+                summary.slideToggle();
+                summary_btn.slideToggle();
+            });
+        });
+            
+        </script>
+        
+        
+    </form>
     </div>
     
-    <div class="form-group">
-        <p>Total: £<span class="total">0.00</span></p>
+    
+    
+    
+    <div class="summary">
+        <div class="summary_close_btn">&times;</div>
+            <div class="summary_section">
 
 
-        <input type="submit" name="submit" value="Submit" class="submit">
-    </div>
 
-        </form>
-    </div>
+                <h2>Summary</h2>
+
+                <div class="row">
+                    <div class="summary_header">
+                        <p>Embassy Fee</p>
+                    </div>
+                    <div class="summary_value">
+                        <p><span class="embassy_fee_summary summary">0.00</span></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="summary_header">
+                        <p>Service Fee</p>
+                    </div>
+                    <div class="summary_value">
+                        <p><span class="service_fee_summary summary">0.00</span></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="summary_header">
+                        <p>VAT</p>
+                    </div>
+                    <div class="summary_value">
+                        <p><span class="vat_summary summary">0.00</span></p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="summary_header">
+                        <p>Additional Fee</p>
+                    </div>
+                    <div class="summary_value">
+                        <p><span class="additional_fee_summary summary">0.00</span></p>
+                    </div>
+                </div>
+
+                <hr class="summary_hr" />
+
+                <div class="row">
+                    <div class="summary_header">
+                        <p>Total</p>
+                    </div>
+                    <div class="summary_value">
+                        <p><span class="total">0.00</span></p>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div class="wrapper_container">
+                <div class="form-group">
+                    <input type="submit" name="submit" value="Submit" class="submit" style="width: 100%">
+                </div>
+            </div>
+        
+        
+        </div>
+    
+    
+    
+    
+    
+    
+
+</div>
     
  

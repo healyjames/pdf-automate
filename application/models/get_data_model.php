@@ -88,6 +88,32 @@ class Get_data_model extends CI_Model {
         return $query->result_array();
         
     }
+    
+    
+    
+    
+    
+    /**
+    
+    This functions runs an SQL SELECT statement which finds a specific value from a table in the database.
+    
+    It formats the SELECT ... FROM ... WHERE ... = ... statement.
+    
+    It then returns an array of results.
+    
+    */
+    public function get_specific_data($target, $table, $filter, $match){
+        
+        $this->db->select($target);
+        $this->db->from($table);
+        $this->db->where($filter, $match);
+        
+        $query = $this->db->get();
+        return $query->result_array();
+        
+    }
+    
+    
 }
 
 ?>

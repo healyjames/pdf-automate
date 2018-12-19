@@ -29,7 +29,7 @@ class Create extends CI_Controller {
         $data['price_bands'] = $this->get_data_model->get_all_data('price_bands');
         $data['formats'] = $this->get_data_model->get_all_data('formats');
         
-        $data['load_js'] = array('price-bands.js','auto-selector.js', 'show-hide.js', 'checked-value.js', 'calculate-vat.js','calculate-total.js');
+        $data['load_js'] = array('price-bands.js', 'service_fee_toggle.js', 'checked-value.js', 'additional_fee_vat_calculator.js','calculate-total.js', 'service_fee_vat_calculator.js', 'summary_calculator.js');
         
         $this->form_validation->set_rules('country', 'Country', 'required');
         $this->form_validation->set_rules('purpose', 'Purpose', 'required');

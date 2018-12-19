@@ -11,6 +11,7 @@ echo form_open('update/' . $id, $formClass);
 
 ?>
     <div class="wrapper">
+        <div class="wrapper_container">
         <h2><?php echo $title; ?></h2>
         
         <h1><?php echo $visa['country']; ?> <?php echo $visa['purpose']; ?> <?php echo $visa['visatype']; ?></h1>
@@ -137,11 +138,11 @@ echo form_open('update/' . $id, $formClass);
     
             if($band['price_band_id'] === $visa['price_band_id']){
 
-                echo '<option value="' . $band['price_band_id'] . '" selected>' . $band['price_band_id'] . '</option>';
+                echo '<option label="' . $band['price'] . '" value="' . $band['price_band_id'] . '" selected>' . $band['price_band_id'] . '</option>';
 
             }else {
 
-                echo '<option value="' . $band['price_band_id'] . '">' . $band['price_band_id'] . '</option>';
+                echo '<option label="' . $band['price'] . '" value="' . $band['price_band_id'] . '">' . $band['price_band_id'] . '</option>';
 
             }
         }
@@ -209,14 +210,114 @@ echo form_open('update/' . $id, $formClass);
             <span class="check"></span><p>VAT</p>
         </label>
     </div>
-        
-        <div class="form-group">
-            <p>Total: £<span class="total"><?php echo $visa['embassy_fee'] + $visa['variable_service_fee'] + $visa['additional_fee'] + $visa['price'];  ?></span></p>
-        
-            <input type="submit" name="submit" value="Submit" class="submit">
             
-        </div>
+            <div class="form-group">
+                <div class="summary_btn"><p>Summary</p></div>
+            </div>
+        
+        
     </form>
+        </div>
+    </div>
+    
+    
+    <div class="summary_section">
+
+        <h2>Summary</h2>
+
+        <div class="row">
+            <div class="summary_header">
+                <p>Embassy Fee</p>
+            </div>
+            <div class="summary_value">
+                <p><span class="embassy_fee_summary summary"><?php echo $visa['embassy_fee'] ?></span></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="summary_header">
+                <p>Service Fee</p>
+            </div>
+            <div class="summary_value">
+                <p><span class="service_fee_summary summary">
+                    
+                    
+                    <?php
+    
+    
+                    /**
+
+                    Figure out whether this visa has a variable price or a price that falls into a price band
+                    Then display that price
+
+                    */
+
+                    if($visa['price_band_id'] === 'S'){
+
+                        echo $visa['variable_service_fee'];
+
+                    }else {
+
+                        foreach($price_bands as $band){
+
+                            if($band['price_band_id'] === $visa['price_band_id']){
+
+                                echo $band['price'];
+
+                            }
+                        }
+                    }
+
+                    ?>
+                    
+                    
+                </span></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="summary_header">
+                <p>VAT</p>
+            </div>
+            <div class="summary_value">
+                <p><span class="vat_summary summary">0.00</span></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="summary_header">
+                <p>Additional Fee</p>
+            </div>
+            <div class="summary_value">
+                <p><span class="additional_fee_summary summary"><?php echo $visa['additional_fee']; ?></span></p>
+            </div>
+        </div>
+
+        <hr class="summary_hr" />
+
+        <div class="row">
+            <div class="summary_header">
+                <p>Total</p>
+            </div>
+            <div class="summary_value">
+                <p><span class="total">0.00</span></p>
+            </div>
+        </div>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    <div class="wrapper_container">
+        <div class="form-group">
+            <input type="submit" name="submit" value="Submit" class="submit" style="width: 100%">
+        </div>
+    </div>
+    
+    
 </div>
 
 

@@ -1,4 +1,4 @@
-//Calculate the vat of a price
+//Calculate the vat of the additional fee
 $(document).ready(function() {
     
     //save original value entered into input

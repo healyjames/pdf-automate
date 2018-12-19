@@ -55,9 +55,11 @@ label {
 }
 .wrapper {
     margin: 0 auto;
-    width: 60%;
-    padding: 3% 6%;
+    width: 65%;
     background-color: #fff;
+}
+.wrapper_container {
+    padding: 5% 10%;
 }
 .visa-form input[type="text"], select {
     border-radius: 5px;
@@ -214,8 +216,6 @@ tr:hover .delete img, tr:hover .edit img {
 
 
 
-
-
 /* -- HEADER STYLING --*/
 .top-menu {
     display: flex;
@@ -332,3 +332,77 @@ tr:hover .delete img, tr:hover .edit img {
 /* -- DELETE PAGE STYLING --*/
 .delete-btn { background-color: #CC3628; }
 .delete-btn:hover { background-color: #FF4332; }
+
+
+
+
+
+
+
+
+
+/* -- SUMMARY BOX STYLING --*/
+.summary {
+    color: #fff;
+}
+
+.summary_section{
+    padding: 50px 100px;
+    background-image: url("/assets/images/squiggle-background.jpg");
+}
+
+.summary_header {
+    display: inline-block;
+}
+
+.summary_value {
+    display: inline-block;
+    float: right;
+}
+
+.summary_hr {
+    width: 100%;
+    border: 1px solid #fff;
+    margin: 20px 0px;
+}
+
+.summary_section p{
+    font-size: 18px;
+    margin: 5px 0px;
+}
+
+.summary_btn {
+    
+    color: #fff;
+    background-color: #E50D96;
+    border-radius: 2px;
+    padding: 12px 30px;
+	cursor: pointer;
+    margin-top: 25px;
+    
+    
+    -webkit-transition: background-color 1s ease-out;
+    -moz-transition: background-color 1s ease-out;
+    -o-transition: background-color 1s ease-out;
+    transition: background-color 1s ease-out;
+    
+}
+
+.summary_btn:hover {
+    background-color: #B50975;
+}
+
+.summary_btn p {
+    text-align: center;
+    color: #fff;
+    margin: 0px;
+}
+
+.summary_close_btn {
+    font-weight: bold;
+    font-size: 26px;
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}

@@ -1,3 +1,7 @@
+/*
+This script sets up the search bar.
+It hides any records that do not match what the user is typing into the search bar.
+*/
 $(document).ready(function(){
     
   $("#searchBar").on("keyup", function() {

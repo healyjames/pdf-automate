@@ -33,7 +33,7 @@ class Update extends CI_Controller {
             $data['id'] = $id;
             $data['vat_rate'] = $this->vat_model->get_vat();
             
-            $data['load_js'] = array('price-bands.js','auto-selector.js', 'show-hide.js', 'checked-value.js', 'calculate-vat.js','calculate-total.js');
+            $data['load_js'] = array('price-bands.js', 'service_fee_toggle.js', 'checked-value.js', 'additional_fee_vat_calculator.js','calculate-total.js', 'service_fee_vat_calculator.js', 'summary_calculator.js');
         
 
             $this->form_validation->set_rules('processingtime_tvc', 'Processing time', 'required');
