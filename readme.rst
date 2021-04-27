@@ -1,4 +1,6 @@
-# About This Project
+###################
+About This Project
+###################
 
 This is a front-end dashboard which connects to a database of visa prices.
 
