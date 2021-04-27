@@ -1,3 +1,18 @@
+# About This Project
+
+This is a front-end dashboard which connects to a database of visa prices.
+
+It allows users to complete simple CRUD operations on the database.
+
+For this project, I have use the CodeIgniter framework.
+
+You can find the work that I contributed to in the following areas:
+/application/models
+/application/controllers
+/application/views
+/assets/custom-scripts
+/assets/css
+
 ###################
 What is CodeIgniter
 ###################
